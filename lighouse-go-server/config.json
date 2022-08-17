@@ -1,0 +1,6 @@
+{
+  "port": ":10892",
+  "web_password": "1234567890password0987654321",
+  "token": "1234567890token0987654321",
+  "aes": "qwertyuiopmznxbcvjdhgytusrjfjghd"
+}
