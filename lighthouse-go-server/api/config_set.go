@@ -16,6 +16,15 @@ func init() {
 	if !exist {
 		err := os.Mkdir(getWd+"/data", 0755)
 		if err != nil {
+			log.Println("Create data dir error: ", err.Error())
+			return
+		}
+	}
+	exist2 := utils.FileIsExist(getWd + "/version")
+	if !exist2 {
+		err := os.Mkdir(getWd+"/version", 0755)
+		if err != nil {
+			log.Println("Create version dir error: ", err.Error())
 			return
 		}
 	}
@@ -39,11 +48,7 @@ func createConfigSet(r *gin.Engine) {
 			returnCommon(c, "file or config is null", 400, "")
 			return
 		}
-		getWd, err := os.Getwd()
-		if err != nil {
-			return
-		}
-		fileName := getWd + "/data/" + configFileName
+		fileName := "data/" + configFileName
 		exist := utils.FileIsExist(fileName)
 		if exist {
 			returnCommon(c, "file is exist", 400, "")
@@ -62,12 +67,14 @@ func createConfigSet(r *gin.Engine) {
 			returnError(c)
 			return
 		}
-		_, err = thisFile.WriteString(configJson)
+
+		err = utils.WriteFileByObj(thisFile, configJson)
 		if err != nil {
 			log.Println("Write file error: " + err.Error())
 			returnError(c)
 			return
 		}
+
 		returnOkResult(c, "")
 	})
 }

@@ -4,3 +4,5 @@ logs
 log
 *.iml
 data
+version
+testL

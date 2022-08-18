@@ -9,6 +9,7 @@ func returnCommon(c *gin.Context, msg string, code int, data string) {
 		"message": msg,
 		"data":    data,
 	})
+	c.Abort()
 }
 
 func returnError(c *gin.Context) {
