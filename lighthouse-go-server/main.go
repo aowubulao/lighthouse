@@ -16,6 +16,8 @@ func main() {
 
 	r.Use(api.HttpInterceptor())
 
+	api.ConfigSetRegister(r)
+
 	// === start service ====
 	err := r.Run(config.GetPort())
 	if err != nil {

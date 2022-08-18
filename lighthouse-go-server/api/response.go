@@ -15,6 +15,10 @@ func returnError(c *gin.Context) {
 	returnCommon(c, "error", 500, "")
 }
 
+func returnForbidden(c *gin.Context) {
+	returnCommon(c, "forbidden", 403, "")
+}
+
 func returnOk(c *gin.Context) {
 	returnCommon(c, "ok", 200, "")
 }
