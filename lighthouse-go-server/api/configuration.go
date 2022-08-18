@@ -41,7 +41,7 @@ func getConfigVersion(r *gin.Engine) {
 			returnError(c)
 			return
 		}
-		returnOkResult(c, string(versionContent))
+		returnOkResult(c, "{\"version\":\" "+string(versionContent)+"\"}")
 	})
 }
 
